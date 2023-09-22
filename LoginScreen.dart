@@ -16,13 +16,23 @@ class _LoginScreenState extends State<LoginScreen> {
     
     return Scaffold(
      appBar: AppBar(
-       title: Text('Login'),
+       title: const Text('Login'),
      ), //appBar
-     body: Center(
-       child: Text('tela de login owo'),
+     body: const Center(
+       child: SizedBox(
+      width: 250,
+      child: TextField(
+      obscureText: true,
+      decoration: InputDecoration(
+      border: OutlineInputBorder(),
+     labelText: 'Insira sua senha',
+      ),
+    ),
+    ),
      ),
+
      floatingActionButton: FloatingActionButton(
-       child: Icon(Icons.add),
+       child: Icon(Icons.login),
       onPressed: (){
         Navigator.push(context, MaterialPageRoute(
           builder: (_) => HomePage(),
