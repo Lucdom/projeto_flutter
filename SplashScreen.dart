@@ -13,22 +13,14 @@ var counter = 0;
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-     appBar: AppBar(
-       title: Text('Bem vindo'),
-     ), //appBar
-     body: Center(
-       child: Text('tela de splash'),
-     ),
-     floatingActionButton: FloatingActionButton(
-       child: Icon(Icons.add),
-      onPressed: (){
-        Navigator.push(context, MaterialPageRoute(
+    return ElevatedButton.icon(
+      icon: const Icon(Icons.check),
+      label: const Text('Bem Vindo!'),
+      onPressed: () {
+           Navigator.push(context, MaterialPageRoute(
           builder: (_) => LoginScreen(),
         ));
-        
       },
-    ),
     );
   }
 }

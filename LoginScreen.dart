@@ -13,6 +13,7 @@ var counter = 0;
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
      appBar: AppBar(
        title: Text('Login'),
@@ -26,7 +27,6 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(context, MaterialPageRoute(
           builder: (_) => HomePage(),
         ));
-        
       },
     ),
     );
