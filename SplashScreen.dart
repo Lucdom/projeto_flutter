@@ -8,14 +8,13 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-var counter = 0;
-
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
       icon: const Icon(Icons.favorite),
       label: const Text('Bem Vindo!'),
+      
       onPressed: () {
            Navigator.push(context, MaterialPageRoute(
           builder: (_) => LoginScreen(),

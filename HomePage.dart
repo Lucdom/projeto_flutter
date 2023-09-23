@@ -8,7 +8,6 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-
 class _HomePageState extends State<HomePage> {
   @override
 
@@ -17,6 +16,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
      appBar: AppBar(
      title: Text('Área do aluno'),
+     backgroundColor: Color.fromRGBO(255, 230, 0, 0.973),
+     foregroundColor: Color.fromRGBO(0, 0, 0, 0.973),
      ), //appBar
      body: Column(
           children: [
@@ -61,11 +62,9 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
 
-        
-
        floatingActionButton: FloatingActionButton(
        child: Icon(Icons.add),
-       backgroundColor: Color.fromRGBO(9, 218, 37, 0.973),
+       backgroundColor: Color.fromRGBO(255, 230, 0, 0.973),
        onPressed: (){
        setState((
        ) {
