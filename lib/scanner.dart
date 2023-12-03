@@ -1,5 +1,6 @@
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Scanner extends StatefulWidget {
   const Scanner({Key? key}) : super(key: key);
@@ -12,6 +13,10 @@ class _Scanner extends State<Scanner> {
   Barcode? result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+
+  static Future<void> vibrate() async {
+    await SystemChannels.platform.invokeMethod<void>('HapticFeedback.vibrate');
+  }
 
   // In order to get hot reload to work we need to pause the camera if the platform
   // is android, or resume the camera if the platform is iOS.
@@ -30,10 +35,17 @@ class _Scanner extends State<Scanner> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   if (result != null)
-                    Text('Data: ${result!.code}')
-                  //${describeEnum(result!.format)}
+                    TextButton(
+                        onPressed: () {
+                          vibrate();
+                          Clipboard.setData(ClipboardData(
+                              text: result!
+                                  .code!)); //copia o texto para a clipboard
+                        },
+                        child: Text(
+                            'Detectado: ${result!.code}. Toque para copiar.'))
                   else
-                    const Text('Scan a code'),
+                    const Text('Aponte a Câmera para um qrcode '),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -48,7 +60,8 @@ class _Scanner extends State<Scanner> {
                             child: FutureBuilder(
                               future: controller?.getFlashStatus(),
                               builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
+                                return Text(
+                                    'Flash: ${snapshot.data == true ? 'ligado' : 'desligado'}');
                               },
                             )),
                       ),
