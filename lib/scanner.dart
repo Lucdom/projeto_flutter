@@ -1,6 +1,7 @@
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:vibration/vibration.dart';
 
 class Scanner extends StatefulWidget {
   const Scanner({Key? key}) : super(key: key);
@@ -37,7 +38,10 @@ class _Scanner extends State<Scanner> {
                   if (result != null)
                     TextButton(
                         onPressed: () {
-                          vibrate();
+                          //vibrate(); // vibração atraves do package services
+                          Vibration.vibrate(
+                              duration:
+                                  1000); // vibraçao atraves da api Vibration
                           Clipboard.setData(ClipboardData(
                               text: result!
                                   .code!)); //copia o texto para a clipboard
