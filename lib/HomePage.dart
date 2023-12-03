@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
 
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.qr_code),
-        backgroundColor: Color.fromRGBO(255, 230, 0, 0.973),
+        backgroundColor: Color.fromRGBO(255, 136, 0, 0.973),
         onPressed: () {
           Navigator.push(
             context,

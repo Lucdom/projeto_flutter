@@ -17,7 +17,7 @@ class LoginAuth {
       if (parts.length == 2) {
         var storedUsername = parts[0];
         var storedPassword = parts[1];
-        print(username + storedUsername + ' | ' + password + storedPassword);
+        // print(username + storedUsername + ' | ' + password + storedPassword);
 
         if (username == storedUsername && password == storedPassword) {
           return true;
